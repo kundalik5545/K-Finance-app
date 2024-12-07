@@ -104,7 +104,7 @@ function HomePage() {
 
       <div className="container-2 bg-black text-white  rounded-lg w-full min-h-fit flex flex-col md:flex-row items-center justify-center p-10">
         <h3 className="text-2xl md:text-2xl lg:text-6xl font-bold text-center mb-6">
-          All IMP Calculators are here...
+          All IMP Calculators are here Testing...
         </h3>
         <p className="text-center text-xl md:text-2xl lg:text-2xl max-w-5xl">
           Invest in Indian Stocks, US Stocks, Direct Mutual Funds, and Fixed
