@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "server": "nodemon src/index.js",
-    "build": "src/index.js"
+    "test": "src/index.js"
   },
   "author": "kundalik jadhav",
   "license": "ISC",
