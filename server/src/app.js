@@ -5,7 +5,7 @@ import cors from "cors";
 const app = express();
 
 const allowedOrigins = [
-  "http://192.168.31.18:5173", // Mobile-accessible frontend
+  "http://ip-address:5173", // Mobile-accessible frontend
   "http://localhost:5173", // PC-accessible frontend
   "https://k-finance-app-back.vercel.app/",
   "https://k-finance-app.vercel.app/",
