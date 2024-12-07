@@ -7,8 +7,7 @@
   "scripts": {
     "start": "node src/index.js",
     "build": "echo 'No build step for backend'",
-    "server": "nodemon src/index.js",
-    "test": "src/index.js"
+    "server": "nodemon src/index.js"
   },
   "author": "kundalik jadhav",
   "license": "ISC",
