@@ -2,9 +2,16 @@ import mongoose from "mongoose";
 
 const connectToDb = async () => {
   try {
-    const connectionInstance = await mongoose.connect(
-      `${process.env.MongoDB_URI}/${process.env.DB_NAME}`
-    );
+    if (process.env.NODE_ENV == "localhost") {
+      const connectionInstance = await mongoose.connect(
+        `${process.env.MongoDB_URI}/${process.env.DB_NAME}`
+      );
+    } else {
+      const connectionInstance = await mongoose.connect(
+        `${process.env.MongoDB_URI_Full}`
+      );
+    }
+
     console.log(
       `\n MongoDB connected !! DB HOST: ${connectionInstance.connection.host}`
     );
