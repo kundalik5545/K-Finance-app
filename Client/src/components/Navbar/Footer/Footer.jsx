@@ -374,7 +374,7 @@ function Footer() {
                 2024
               </span>
             </span>
-            <a href={import.meta.env.VITE_FRONT_BASE_URL}>
+            <a href={import.meta.env.VITE_FRONTEND_URL}>
               {import.meta.env.VITE_WEBSITE_NAME}.
             </a>
           </span>

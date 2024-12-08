@@ -15,9 +15,12 @@ import {
 } from "@/components/ui/popover";
 import { Link } from "react-router-dom";
 import { LogInContext } from "@/App";
+import { useAuth } from "@/hooks/useAuth";
 
 function UserProfileAvatar({ userImg, userName, userEmail }) {
   const { logout } = useContext(LogInContext);
+
+  // const { logout } = useAuth();
 
   return (
     <div className="flex justify-center items-center p-2 m-2">

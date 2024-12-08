@@ -6,6 +6,9 @@ export default defineConfig({
   plugins: [react()],
   server: {
     port: 5173, // change here
+    // hmr: {
+    //   overlay: false,
+    // },
   },
   resolve: {
     alias: {

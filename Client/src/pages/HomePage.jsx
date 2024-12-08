@@ -4,27 +4,15 @@ import { useState, useEffect, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { LogInContext } from "../App";
 import Autoplay from "embla-carousel-autoplay";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { useAuth } from "@/hooks/useAuth";
 
 const websiteName = import.meta.env.VITE_WEBSITE_NAME;
 
 function HomePage() {
-  const options = [1, 2, 3, 4];
   const { isLoggedIn, user } = useContext(LogInContext);
+
+  // const { isLoggedIn, user } = useAuth();
+
   const navigate = useNavigate();
   return (
     <div className="HomePage">

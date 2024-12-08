@@ -8,6 +8,7 @@ import axios from "axios";
 
 function MenuIcon() {
   const { isLoggedIn, logout } = useContext(LogInContext);
+
   const [closeMenus, setCloseMenus] = useState(false);
   const handleOpenMenuIcon = () => {
     setCloseMenus(!closeMenus);

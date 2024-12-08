@@ -1,16 +1,17 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "../ui/button";
 import { LogIn, UserPlus, X } from "lucide-react";
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 import toast from "react-hot-toast";
-import { LogInContext } from "../../App";
 import axiosInstance from "@/Api/AxiosInstance";
+import { useAuth } from "@/hooks/useAuth";
 
 function Login() {
-  const { login } = useContext(LogInContext);
+  const { login } = useAuth(); // Using the custom hook for authentication
   const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     userName: "",
     password: "",
@@ -30,26 +31,25 @@ function Login() {
     try {
       const res = await axiosInstance.post("/user/login", formData);
 
-      //If user is logged In Successfully then
+      // If user is logged in successfully
       if (res.data.success) {
-        setFormData({
-          email: "",
-          password: "",
-        });
-        //Toasting success message
-        toast.success(res.data.data.user.fullName);
+        setFormData({ userName: "", password: "" });
 
-        //Setting user details
+        // Toast success message
+        toast.success(`Welcome, ${res.data.data.user.fullName}!`);
+
+        // Set user details
         login(res.data.data.user);
-        //navigate to dashboard
+
+        // Navigate to dashboard
         navigate("/dashboard", { replace: true });
       } else {
         toast.error("Please contact admin!");
       }
     } catch (error) {
       console.error("Error in login user", error);
-      if (error.res) {
-        toast.error(error.res.data.message || "An error occurred.");
+      if (error.response) {
+        toast.error(error.response.data.message || "An error occurred.");
       } else {
         toast.error("Network Error. Please try again later.");
       }
@@ -61,8 +61,8 @@ function Login() {
       <div className="bg-white pt-3 pb-6 rounded-lg w-full max-w-md shadow-md">
         <div className="login-form p-2 pb-4 flex flex-col items-center space-y-2">
           <span className="font-inter p-2 text-center">
-            👉 If don't have an account please
-            <span className="text-blue-500"> Sign-Up</span> first!! 👈
+            👉 If don't have an account, please
+            <span className="text-blue-500"> Sign Up</span> first!! 👈
           </span>
           <Link to="/sign-up">
             <Button size="default">
@@ -75,12 +75,12 @@ function Login() {
 
         <form onSubmit={handleLoginUser} className="flex flex-col items-center">
           <span className="font-inter p-2 text-center">
-            👉 If already have an account then
+            👉 If already have an account, then
             <span className="text-blue-500"> Login</span> please!! 👈
           </span>
           <div className="mb-4 pt-3">
-            <Label htmlFor="user-email" className="sr-only">
-              Enter Email Id:
+            <Label htmlFor="user-name" className="sr-only">
+              Enter User Name:
             </Label>
             <Input
               type="text"
@@ -88,7 +88,7 @@ function Login() {
               id="user-name"
               value={formData.userName}
               required
-              placeholder="Enter userName"
+              placeholder="Enter User Name"
               onChange={handleChange}
               className="w-[250px]"
             />
@@ -115,12 +115,7 @@ function Login() {
             </Button>
             <Button
               type="reset"
-              onClick={() => {
-                setFormData({
-                  email: "",
-                  password: "",
-                });
-              }}
+              onClick={() => setFormData({ userName: "", password: "" })}
             >
               <X />
               <span>Reset</span>
@@ -129,7 +124,7 @@ function Login() {
 
           <div className="forgot-password flex items-start pt-4">
             <Link
-              to="forgot-password"
+              to="/forgot-password"
               className="text-red-700 underline text-left"
             >
               Forgot Password
