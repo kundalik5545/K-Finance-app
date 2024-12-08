@@ -11,31 +11,3 @@ body {
   background-color: #f5f5f8;
   color: #000;
 }
-
-/* Embla carasoule css */
-.carousel-item img {
-  border-radius: 8px; /* Add rounded corners */
-  transition: transform 0.3s ease; /* Smooth transition on hover */
-}
-
-.carousel-item img:hover {
-  transform: scale(1.05); /* Slight zoom on hover */
-}
-
-.carousel {
-  position: relative;
-}
-
-.carousel-content {
-  display: flex;
-  overflow: hidden;
-  scroll-snap-type: x mandatory;
-}
-
-.carousel-item {
-  scroll-snap-align: start;
-  min-width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
