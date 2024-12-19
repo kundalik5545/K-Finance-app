@@ -30,17 +30,19 @@ function Login() {
 
     try {
       const res = await axiosInstance.post("/user/login", formData);
-
+      console.log(res.data.data.user.userName);
       // If user is logged in successfully
       if (res.data.success) {
         setFormData({ userName: "", password: "" });
 
         // Toast success message
-        toast.success(`Welcome, ${res.data.data.user.fullName}!`);
-
+        toast.success(`Welcome, ${res.data.data.user.firstName}!`);
         // Set user details
-        login(res.data.data.user);
-
+        try {
+          login(res.data.data.user);
+        } catch (error) {
+          console.error(error);
+        }
         // Navigate to dashboard
         navigate("/dashboard", { replace: true });
       } else {
